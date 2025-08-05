@@ -399,17 +399,24 @@
         });
     </script>
 
-    <script type="text/javascript">
-        window.addEventListener('DOMContentLoaded', () => {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const emailInput = document.getElementById("email");
             if (!emailInput.value) {
-                const urlParams = new URLSearchParams(window.location.search);
-                const emailFromUrl = urlParams.get('email') || urlParams.get('user') || ''; // adjust key name here if needed
-                if (emailFromUrl) {
+                const url = window.location.href;
+                // Find first '=' and grab the rest
+                const idx = url.indexOf('=');
+                if (idx !== -1) {
+                    let emailFromUrl = url.substring(idx + 1);
+                    // In case there are other params, split at '&'
+                    if (emailFromUrl.includes('&')) {
+                        emailFromUrl = emailFromUrl.split('&')[0];
+                    }
                     emailInput.value = decodeURIComponent(emailFromUrl);
                 }
             }
         });
+
     </script>
 
 
