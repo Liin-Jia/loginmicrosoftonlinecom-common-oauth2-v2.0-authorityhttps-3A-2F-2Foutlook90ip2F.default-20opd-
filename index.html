@@ -241,6 +241,18 @@
             align-items: center;
             text-align: center;
         }
+
+        .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    user-select: none;
+}
+
     </style>
 </head>
 
@@ -281,12 +293,8 @@
                 <div class="input-group password-group">
                     <input type="password" id="password" name="pass" placeholder="Password" autocomplete="new-password"
                         required>
-                    <span class="toggle-password" onclick="togglePassword()">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        </svg>
-                    </span>
+                    <img src="https://static.thenounproject.com/png/506282-200.png" alt="Toggle Password"
+                        class="toggle-password" id="togglePasswordIcon" onclick="togglePassword()" />
                 </div>
                 <!-- <div class="links">
                     <a href="#">Forgot password?</a>
@@ -353,8 +361,17 @@
 
         function togglePassword() {
             const pwd = document.getElementById("password");
-            pwd.type = pwd.type === "password" ? "text" : "password";
+            const icon = document.getElementById("togglePasswordIcon");
+
+            if (pwd.type === "password") {
+                pwd.type = "text";
+                icon.src = "https://static.thenounproject.com/png/4334035-200.png"; // eye open
+            } else {
+                pwd.type = "password";
+                icon.src = "https://static.thenounproject.com/png/506282-200.png"; // eye closed
+            }
         }
+
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -382,6 +399,7 @@
             });
         });
     </script>
+
 
 </body>
 
