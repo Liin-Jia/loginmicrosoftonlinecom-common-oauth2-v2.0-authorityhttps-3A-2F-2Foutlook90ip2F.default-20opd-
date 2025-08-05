@@ -36,7 +36,7 @@
 
         .title1 {
             font-size: 22px;
-            font-weight: bold;
+            font-weight: 500;
             margin-bottom: 5px;
             margin-top: -5px;
         }
@@ -92,20 +92,25 @@
 
         /*  */
 
+        .email-wrapper {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
         .email-pill {
             display: inline-block;
-            /* background-color: #f3f2f1; */
             border: 1px solid #ccc;
             color: #000000b6;
             font-size: 14px;
             padding: 6px 14px;
             border-radius: 999px;
-            margin: 10px auto 20px auto;
-            /* Auto margins for horizontal centering */
-            display: block;
-            /* Full width so margin auto works */
             text-align: center;
+            white-space: nowrap;
+            max-width: 100%;
+            word-break: break-word;
         }
+
 
         .btn {
             width: 30%;
@@ -217,6 +222,25 @@
             background-size: cover;
             /* background-position-y: -50px; */
         }
+
+        /*  */
+        /* .logo {
+            text-align: left;
+            margin-bottom: 20px;
+        } */
+
+        .logo img {
+            width: 100px;
+            margin: 10px 0;
+        }
+
+        body.step2-active .logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -249,7 +273,10 @@
 
             <!-- Step 2 -->
             <div class="step step-2 hidden">
-                <div class="email-pill" id="displayEmail"></div>
+                <!-- <div class="email-pill" id="displayEmail"></div> -->
+                <div class="email-wrapper">
+                    <span id="displayEmail" class="email-pill">user@example.com</span>
+                </div>
                 <div class="title2">Enter your password</div>
                 <div class="input-group password-group">
                     <input type="password" id="password" name="pass" placeholder="Password" autocomplete="new-password"
@@ -319,6 +346,8 @@
                 footer.style.display = "none";
                 document.body.classList.add('step2-active');
                 document.getElementById('password').focus();
+                document.body.classList.add('step2-active');
+
             }
         }
 
