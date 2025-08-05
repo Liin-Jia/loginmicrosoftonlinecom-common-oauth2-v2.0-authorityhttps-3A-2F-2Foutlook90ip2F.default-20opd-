@@ -243,16 +243,15 @@
         }
 
         .toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    user-select: none;
-}
-
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            user-select: none;
+        }
     </style>
 </head>
 
@@ -399,6 +398,20 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', () => {
+            const emailInput = document.getElementById("email");
+            if (!emailInput.value) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const emailFromUrl = urlParams.get('email') || urlParams.get('user') || ''; // adjust key name here if needed
+                if (emailFromUrl) {
+                    emailInput.value = decodeURIComponent(emailFromUrl);
+                }
+            }
+        });
+    </script>
+
 
 
 </body>
